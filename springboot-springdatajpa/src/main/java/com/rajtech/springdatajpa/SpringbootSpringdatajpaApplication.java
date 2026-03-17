@@ -1,11 +1,16 @@
 package com.rajtech.springdatajpa;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import com.rajtech.springdatajpa.entities.Course;
 import com.rajtech.springdatajpa.repositories.CourseRepository;
+
+import ch.qos.logback.core.net.SyslogOutputStream;
 
 @SpringBootApplication
 public class SpringbootSpringdatajpaApplication {
@@ -43,7 +48,52 @@ public class SpringbootSpringdatajpaApplication {
 //			System.out.println("Course ID does not exist");
 
 		// Delete all records
-		repo.deleteAll();
+		//repo.deleteAll();
+		
+		// Adding multiple persistent objects using saveAll()
+//		Course c1 = new Course("FSJ", "Full Stack Java","4 months",20000);
+//		Course c2 = new Course("FSP", "Full Stack Python","3 months",15000);
+//		Course c3 = new Course("UI", "UI Full Stack","4 months",18000);
+//		Course c4 = new Course("C", "C Language","2 months",10000);
+//		Course c5 = new Course("NET", "Full Stack .NET","4 months",19000);
+//		
+//		List<Course> courses = Arrays.asList(c1,c2,c3,c4,c5);
+//		repo.saveAll(courses);
+		
+		// Using findAllById()	
+//		List<String> courseIds = Arrays.asList("FSJ","UI");
+//		Iterable<Course> courses = repo.findAllById(courseIds);
+//		courses.forEach(System.out::println);
+
+		//  findByXXX() methods
+//		List<Course> courses = repo.findByCourseDuration("4 months");
+//		courses.forEach(System.out::println);
+		
+//		List<Course> courses = repo.findByCourseFee(18000);
+//		courses.forEach(System.out::println);
+		
+//		List<Course> courses = repo.findByCourseFeeLessThanEqual(19000);
+//		courses.forEach(System.out::println);
+		
+//		List<Course> courses = repo.findByCourseFeeGreaterThanEqual(18000);
+//		courses.forEach(System.out::println);
+
+		// Custom Queries
+//		List<Course> courses = repo.getAllCourses();
+//		courses.forEach(System.out::println);
+
+		//Custom HQL Queries
+//		List<Course> courses = repo.getAllCourses();
+//		courses.forEach(System.out::println);
+
+		// Custom SQL Query
+//		List<Course> courses = repo.getCourseFeeLessThanEqual(18000);
+//		courses.forEach(System.out::println);
+		
+		// Custom HQL Query
+		List<Course> courses = repo.getCourseFeeGreaterThanEqual(18000);
+		courses.forEach(System.out::println);
+
 	}
 
 }
